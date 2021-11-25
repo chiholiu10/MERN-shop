@@ -1,17 +1,24 @@
 import { types } from "../Actions";
 
-const initialState = {
-  token: ""
+type InitalStateProps = {
+  token: string;
+  products: Array<string | boolean | number>;
+};
+
+const initialState: InitalStateProps = {
+  token: "",
+  products: []
 };
 
 export const reducer = (state = initialState, action: any) => {
-  switch (action.types) {
-    case types.GET_TOKEN: {
+  switch (action.type) {
+    case types.ALL_PRODUCTS: {
       return {
         ...state,
-        token: action.token
+        products: action.products
       };
     }
+
     default: {
       return state;
     }

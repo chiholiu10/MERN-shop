@@ -1,27 +1,49 @@
 import { FC, memo, useState, useEffect } from "react";
-import { connect, ConnectedProps } from "react-redux";
+import { connect, ConnectedProps, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import { Dashboard } from "./Components/Dashboard/Dashboard";
+import ProductList from "./Components/ProductList/ProductList";
 import { ResetPassword } from "./Components/ResetPassword/ResetPassword";
 import { Login } from "./Components/Login/Login";
 import { Register } from "./Components/Register/Register";
 import { EnterNewPassword } from "./Components/EnterNewPassword/EnterNewPassword";
 import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
 import Cookies from "universal-cookie";
+import { allProducts } from "./Actions";
 
 const App: FC<AppProps> = () => {
-  const [isAuth, setIsAuth] = useState(false);
+  const dispatch = useDispatch();
+  const [isAuth, setIsAuth] = useState<boolean>(false);
+  const [loader, setLoader] = useState<boolean>(true);
   const cookies = new Cookies("AccessToken");
-  console.log(cookies === null);
+
+  const fetchProductApi = async () => {
+    setLoader(false);
+    try {
+      const products = await fetch("https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=4209&limit=48&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US", {
+        "method": "GET",
+        "headers": {
+          "x-rapidapi-host": process.env.REACT_APP_X_RAPID_API_HOST || "",
+          "x-rapidapi-key": process.env.REACT_APP_X_RAPID_API_KEY || ""
+        }
+      });
+      const productJSON = await products.json();
+      dispatch(allProducts(productJSON.products));
+      setLoader(true);
+      console.log(productJSON);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     setIsAuth(false);
+    fetchProductApi();
   }, []);
 
   return (
     <Routes>
       <Route path="/" element={<ProtectedRoute isAuth={true} />}>
-        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Dashboard" element={<ProductList />} />
       </Route>
       <Route path="/reset-password/:id/:token" element={<EnterNewPassword />} />
       <Route path="/register" element={<Register />} />
