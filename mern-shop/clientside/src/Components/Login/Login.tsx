@@ -15,7 +15,7 @@ export const Login: FC = () => {
     }));
   };
 
-  let loginUser = async (event: any) => {
+  const loginUser = async (event: any) => {
     event.preventDefault();
     const loginRequest = {
       method: 'POST',

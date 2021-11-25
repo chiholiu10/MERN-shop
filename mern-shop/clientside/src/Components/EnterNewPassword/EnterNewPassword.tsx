@@ -37,4 +37,4 @@ export const EnterNewPassword = () => {
       </form>
     </div>
   );
-};;
+};

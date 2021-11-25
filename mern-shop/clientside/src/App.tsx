@@ -1,14 +1,14 @@
 import { FC, memo, useState, useEffect } from "react";
 import { connect, ConnectedProps, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import ProductList from "./Components/ProductList/ProductList";
 import { ResetPassword } from "./Components/ResetPassword/ResetPassword";
 import { Login } from "./Components/Login/Login";
 import { Register } from "./Components/Register/Register";
 import { EnterNewPassword } from "./Components/EnterNewPassword/EnterNewPassword";
 import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
-import Cookies from "universal-cookie";
 import { allProducts } from "./Actions";
+import ProductList from "./Components/ProductList/ProductList";
+import Cookies from "universal-cookie";
 
 const App: FC<AppProps> = () => {
   const dispatch = useDispatch();
