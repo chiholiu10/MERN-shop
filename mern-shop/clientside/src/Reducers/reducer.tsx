@@ -1,17 +1,13 @@
 import { types } from "../Actions";
 
 type InitalStateProps = {
-  token: string;
   products: any;
   cart: any;
-  quantity: any;
 };
 
 const initialState: InitalStateProps = {
-  token: "",
   products: [],
-  cart: [],
-  quantity: 0
+  cart: []
 };
 
 export const reducer = (state = initialState, action: any) => {
@@ -19,7 +15,7 @@ export const reducer = (state = initialState, action: any) => {
   switch (action.type) {
     case types.ALL_PRODUCTS: {
       const fetchProduct = action.products;
-      const newData = fetchProduct.map((item: any) => {
+      const newData = fetchProduct.map((item: { quantity: number; }) => {
         return {
           ...item,
           quantity: 1
@@ -61,6 +57,7 @@ export const reducer = (state = initialState, action: any) => {
           quantity: newQuantity
         };
       }
+
       return {
         ...state,
         cart: shoppingCart
