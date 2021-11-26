@@ -3,6 +3,7 @@ export const types = {
   ALL_PRODUCTS: "ALL_PRODUCTS",
   INCREMENT_QUANTITY: "INCREMENT_QUANTITY",
   DECREMENT_QUANTITY: "DECREMENT_QUANTITY",
+  DELETE_FROM_CART: "DELETE_FROM_CART",
   ADD_TO_CART: "ADD_TO_CART"
 };
 
@@ -31,5 +32,10 @@ export const decrementQuantity = (item: any, itemId: any) => ({
 export const incrementQuantity = (item: any, itemId: any) => ({
   type: types.INCREMENT_QUANTITY,
   item,
+  itemId
+});
+
+export const deleteFromCart = (itemId: any) => ({
+  type: types.DELETE_FROM_CART,
   itemId
 });

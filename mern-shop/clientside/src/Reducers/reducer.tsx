@@ -85,6 +85,13 @@ export const reducer = (state = initialState, action: any) => {
       };
     }
 
+    case types.DELETE_FROM_CART: {
+      return {
+        ...state,
+        cart: state.cart.filter((item: any) => item.id !== action.itemId)
+      };
+    }
+
     default: {
       return state;
     }

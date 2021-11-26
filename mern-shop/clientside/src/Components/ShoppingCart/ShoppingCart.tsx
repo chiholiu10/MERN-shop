@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { connect, ConnectedProps } from "react-redux";
-import { decrementQuantity, incrementQuantity } from "../../Actions";
+import { decrementQuantity, deleteFromCart, incrementQuantity } from "../../Actions";
 import { useDispatch } from "react-redux";
 
 export const ShoppingCart: FC<ShoppingCartProps> = ({ shoppingCart }) => {
@@ -14,6 +14,7 @@ export const ShoppingCart: FC<ShoppingCartProps> = ({ shoppingCart }) => {
             <p>{item.quantity}</p>
             <button onClick={() => dispatch(incrementQuantity(item, item.id))}>+</button>
             <button onClick={() => dispatch(decrementQuantity(item, item.id))}>-</button>
+            <button onClick={() => dispatch(deleteFromCart(item.id))}>Delete</button>
           </div>
         );
       })}
