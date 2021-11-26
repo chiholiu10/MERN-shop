@@ -11,7 +11,27 @@ export type LoginType = {
 };
 
 export type RegisterType = {
-  username?: any;
-  password?: any;
-  email?: any;
+  username: string;
+  password: string;
+  email: string;
+};
+
+export type ItemsProps = {
+  brandName: string;
+  colour?: string;
+  colourWayId?: number;
+  id: number;
+  imageUrl: string;
+  isSellingFast: boolean;
+  name: string;
+  price: {
+    currency: string,
+    current: {
+      value: number;
+      text: string;
+    },
+    productCode: number;
+    productType: string;
+    url: string;
+  };
 };

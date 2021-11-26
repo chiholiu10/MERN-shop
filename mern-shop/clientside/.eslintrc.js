@@ -5,7 +5,6 @@ module.exports = {
     },
     extends: [
         'plugin:react/recommended', // Uses the recommended rules from @eslint-plugin-react
-        'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -26,6 +25,6 @@ module.exports = {
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
-        "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }], //should add ".ts" if typescript project
+        "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx", "js"] }], //should add ".ts" if typescript project
     }
 };
