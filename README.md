@@ -4,9 +4,12 @@ ReactJS
 
 Todo list:
 
-[x] Token. 
-[x] Register.    
-[x] Login.
+[x] Token
+
+[x] Register
+
+[x] Login
+
 [x] React-router.
 [x] Styled-Components. 
 [x] TypeScript. 
