@@ -32,8 +32,8 @@ Todo list:
 
 [] Blockchain
 
-[ ] Stripe payment
+[x] Stripe payment
 
 [x] Docker
 
-[ ] Email notification
+[ ] Email notification (payment + newsletter)
