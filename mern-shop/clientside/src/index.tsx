@@ -8,7 +8,6 @@ import thunk from "redux-thunk";
 import { CSSreset } from './Styles/CssReset';
 import { ThemeProvider } from 'styled-components';
 import theme from './Styles/Theme';
-import { BrowserRouter } from "react-router-dom";
 
 const store = createStore(
   reducer,
@@ -20,9 +19,7 @@ ReactDOM.render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <CSSreset />
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <App />
       </ThemeProvider>
     </Provider>
   </React.StrictMode>,

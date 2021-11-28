@@ -5,10 +5,42 @@ const app = express();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
+const Stripe = require('stripe');
+const stripe = Stripe('sk_test_51GsFA7EZJORHGbIlDHiPX8oa54qJGrfnoFwcVzMK2tbeE7KPZu8N6HPOBxo7fhrc4nEz7PqiQu0ualHpHMNUMpbq00xcJk7Nzc');
 
 app.use(cookieParser());
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
+
+const calculateOrderAmount = (items) => {
+  // Replace this constant with a calculation of the order's amount
+  // Calculate the order total on the server to prevent
+  // people from directly manipulating the amount on the client
+  return 1400;
+};
+
+app.post("/create-payment-intent", cors(), async (request, response) => {
+  // const { item } = request.body;
+  // Create a PaymentIntent with the order amount and currency
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: calculateOrderAmount(),
+    currency: "eur",
+    automatic_payment_methods: {
+      enabled: true,
+    },
+  });
+
+  const cookie = response.cookie('AccessToken');
+  console.log(cookie);
+  const customer = await stripe.customers.create({
+    name: 'jenny rosen',
+    email: 'jenny.rosen@example.com',
+    description: 'My first test customer',
+  });
+
+  response.json({ clientSecret: paymentIntent.client_secret });
+});
+
 
 const generateAccessToken = (signinData) => {
   return jwt.sign(signinData, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
@@ -64,14 +96,15 @@ app.post("/login", (request, response) => {
   User.findOne({ username: username }).then((user) => {
     if (user && bcrypt.compare(password, user.password)) {
       const token = generateAccessToken({ username: user.username, password: user.password });
-      response.cookie('AccessToken', token, {
+      response.cookie('access_token', token, {
         expires: new Date(new Date().getTime() + 30 * 1000),
         sameSite: 'strict',
         secure: true,
         httpOnly: true,
       });
-      console.log('successfully logged in');
-      response.status(200).header("auth-token", token).json({ "token": token });
+      console.log(token);
+      console.dir(request.cookies.access_token);
+      response.header("auth-token", token).json({ "token": token });
     } else {
       console.log("Invalid password");
       response.status(401).send("Invalid Credentials");
@@ -103,5 +136,7 @@ app.post('/register', async (request, response) => {
     response.status(400).json({ message: "User not added" });
   }
 });
+
+
 
 module.exports = app;

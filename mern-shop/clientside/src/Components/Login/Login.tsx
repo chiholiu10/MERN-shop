@@ -1,5 +1,5 @@
-import { FC, useState } from "react";
-import type { EventTargtProps, LoginType } from "src/Types/Types";
+import { FC, FormEvent, useState } from "react";
+import type { EventTargtProps, LoginRequestType, LoginType } from "src/Types/Types";
 
 export const Login: FC = () => {
   const [loginData, setLoginData] = useState<LoginType>({
@@ -15,14 +15,16 @@ export const Login: FC = () => {
     }));
   };
 
-  const loginUser = async (event: any) => {
+  let loginUser = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const loginRequest = {
+
+    const loginRequest: LoginRequestType = {
       method: 'POST',
       withCredentials: true,
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
       },
       body: JSON.stringify(loginData)
     };

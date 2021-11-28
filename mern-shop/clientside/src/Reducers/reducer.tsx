@@ -1,3 +1,4 @@
+import type { ItemsProps } from "src/Types/Types";
 import { types } from "../Actions";
 
 type InitalStateProps = {
@@ -11,7 +12,7 @@ const initialState: InitalStateProps = {
 };
 
 export const reducer = (state = initialState, action: any) => {
-  const shoppingCart: any = [...state.cart];
+  const shoppingCart = [...state.cart];
   switch (action.type) {
     case types.ALL_PRODUCTS: {
       const fetchProduct = action.products;
@@ -37,10 +38,9 @@ export const reducer = (state = initialState, action: any) => {
           quantity: newQuantity
         };
       } else {
-        shoppingCart.push({
-          ...action.item
-        });
+        shoppingCart.push(action.item);
       }
+
       return {
         ...state,
         cart: shoppingCart
@@ -51,7 +51,7 @@ export const reducer = (state = initialState, action: any) => {
       const checkProduct = shoppingCart.findIndex((item: any) => item.id === action.itemId);
 
       if (checkItem) {
-        const newQuantity = shoppingCart[checkProduct].quantity += 1;
+        const newQuantity = parseInt(shoppingCart[checkProduct].quantity += 1);
         shoppingCart[checkProduct] = {
           ...action.item,
           quantity: newQuantity

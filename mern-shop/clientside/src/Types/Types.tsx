@@ -35,3 +35,14 @@ export type ItemsProps = {
     url: string;
   };
 };
+
+export type LoginRequestType = {
+  method: string;
+  withCredentials: boolean;
+  credentials: any;
+  headers: {
+    'Content-Type': string;
+    Accept: string;
+  };
+  body: string;
+};

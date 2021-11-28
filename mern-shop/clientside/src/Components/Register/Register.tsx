@@ -18,7 +18,7 @@ export const Register: FC = () => {
     };
 
     try {
-      await fetch("/register", requestOptions);
+      await fetch("http://localhost:8080/register", requestOptions);
     } catch (error) {
       console.error(error);
     }

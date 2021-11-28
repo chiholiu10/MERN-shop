@@ -22,6 +22,9 @@ services:
     image: mongo:latest
     ports:
       - "27017:27017"
+  stripe-cli:
+    image: stripe/stripe-cli
+    container_name: stripe-cli
   client:
     build:
       network: host

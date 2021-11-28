@@ -14,10 +14,13 @@ Todo list:
 [x] React Hooks
 [x] NodeJS
 [x] Express
+[] Filter product
+[] Search product
 [] UX-flow website
-[] Api (products)
+[x] Api (products)
 [] Jest
 [] Blockchain 
 [] Stripe payment
-[] Docker
+[x] Docker
+[] CI CD Pipeline
 [] Email notification

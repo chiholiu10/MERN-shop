@@ -9,9 +9,12 @@ import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
 import { allProducts } from "./Actions";
 import ProductList from "./Components/ProductList/ProductList";
 import Cookies from "universal-cookie";
+import { BrowserRouter } from "react-router-dom";
+import { PaymentComplete } from "./Components/PaymentComplete/PaymentComplete";
 
 const App: FC<AppProps> = () => {
   const dispatch = useDispatch();
+  const [clientSecret, setClientSecret] = useState("");
   const [isAuth, setIsAuth] = useState<boolean>(false);
   const [loader, setLoader] = useState<boolean>(true);
   const cookies = new Cookies("AccessToken");
@@ -29,7 +32,6 @@ const App: FC<AppProps> = () => {
       const productJSON = await products.json();
       dispatch(allProducts(productJSON.products));
       setLoader(true);
-      console.log(productJSON);
     } catch (error) {
       console.log(error);
     }
@@ -41,15 +43,18 @@ const App: FC<AppProps> = () => {
   }, []);
 
   return (
-    <Routes>
-      <Route path="/" element={<ProtectedRoute isAuth={true} />}>
-        <Route path="/Dashboard" element={<ProductList />} />
-      </Route>
-      <Route path="/reset-password/:id/:token" element={<EnterNewPassword />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/reset-password" element={<ResetPassword />} />
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ProtectedRoute isAuth={true} />}>
+          <Route path="/Dashboard" element={<ProductList />} />
+        </Route>
+        <Route path="/reset-password/:id/:token" element={<EnterNewPassword />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/payment-complete" element={<PaymentComplete />} />
+      </Routes>
+    </BrowserRouter >
   );
 };
 
