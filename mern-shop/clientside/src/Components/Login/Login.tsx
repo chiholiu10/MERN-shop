@@ -15,7 +15,7 @@ export const Login: FC = () => {
     }));
   };
 
-  let loginUser = async (event: FormEvent<HTMLFormElement>) => {
+  const loginUser = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const loginRequest: LoginRequestType = {

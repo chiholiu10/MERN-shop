@@ -19,6 +19,19 @@ const calculateOrderAmount = (items) => {
   return 1400;
 };
 
+app.post("/send-invoice", async (request, response) => {
+  const invoiceItem = await stripe.invoiceItems.create({
+    customer: 'cus_4fdAW5ftNQow1a',
+    price: 'price_CBb6IXqvTLXp3f',
+  });
+  const invoice = await stripe.invoices.create({
+    customer: 'cus_4fdAW5ftNQow1a',
+    auto_advance: true, // Auto-finalize this draft after ~1 hour
+    collection_method: 'charge_automatically'
+  });
+  const invoice = await stripe.invoices.finalizeInvoice('id');
+});
+
 app.post("/create-payment-intent", cors(), async (request, response) => {
   // const { item } = request.body;
   // Create a PaymentIntent with the order amount and currency
@@ -30,17 +43,14 @@ app.post("/create-payment-intent", cors(), async (request, response) => {
     },
   });
 
-  const cookie = response.cookie('AccessToken');
-  console.log(cookie);
   const customer = await stripe.customers.create({
-    name: 'jenny rosen',
-    email: 'jenny.rosen@example.com',
+    name: 'chiho liu',
+    email: 'chiholiu10@gmail.com',
     description: 'My first test customer',
   });
 
-  response.json({ clientSecret: paymentIntent.client_secret });
+  response.json({ clientSecret: paymentIntent.client_secret, customer: customer });
 });
-
 
 const generateAccessToken = (signinData) => {
   return jwt.sign(signinData, process.env.TOKEN_SECRET, { expiresIn: '1800s' });

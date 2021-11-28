@@ -120,20 +120,6 @@ export const CheckOutForm: FC = () => {
   };
   return (
     <>
-      {/* {!success ?
-        <form onSubmit={handleSubmit}>
-          <fieldset className="FormGroup">
-            <div className="FormRow">
-              <CardElement />
-            </div>
-          </fieldset>
-          <button>Pay</button>
-        </form>
-        :
-        <div>
-          <h2>You just bought a sweet spatula congrats this is the best decision of you are life</h2>
-        </div>
-      } */}
       <form id="payment-form" onSubmit={handleSubmit}>
         <PaymentElement id="payment-element" />
         <button disabled={isLoading || !stripe || !elements} id="submit">
@@ -141,7 +127,7 @@ export const CheckOutForm: FC = () => {
             {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
           </span>
         </button>
-        {/* Show any error or success messages */}
+
         {message && <div id="payment-message">{message}</div>}
       </form>
     </>
