@@ -7,10 +7,12 @@ export const types = {
   ADD_TO_CART: "ADD_TO_CART"
 };
 
-export const getToken = (token: string) => ({
-  type: types.GET_TOKEN,
-  token
-});
+export const getToken = (token: string) => {
+  return {
+    type: types.GET_TOKEN,
+    token
+  };
+};
 
 export const allProducts = (products: any) => ({
   type: types.ALL_PRODUCTS,

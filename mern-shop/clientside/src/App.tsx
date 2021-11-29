@@ -11,6 +11,7 @@ import ProductList from "./Components/ProductList/ProductList";
 import Cookies from "universal-cookie";
 import { BrowserRouter } from "react-router-dom";
 import { PaymentComplete } from "./Components/PaymentComplete/PaymentComplete";
+import { Form } from "./Components/Form/Form";
 
 const App: FC<AppProps> = () => {
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ const App: FC<AppProps> = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/payment-complete" element={<PaymentComplete />} />
+        <Route path="/form" element={<Form />} />
       </Routes>
     </BrowserRouter >
   );

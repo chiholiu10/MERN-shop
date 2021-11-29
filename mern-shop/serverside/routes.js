@@ -5,12 +5,45 @@ const app = express();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
+const nodemailer = require("nodemailer");
 const Stripe = require('stripe');
 const stripe = Stripe('sk_test_51GsFA7EZJORHGbIlDHiPX8oa54qJGrfnoFwcVzMK2tbeE7KPZu8N6HPOBxo7fhrc4nEz7PqiQu0ualHpHMNUMpbq00xcJk7Nzc');
+const dotenv = require('dotenv');
+dotenv.config();
 
 app.use(cookieParser());
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
+
+console.log(process.env.USEREMAIL, process.env.EMAILPASSWORD);
+
+app.post("/sendForm", (request, response) => {
+  console.log(request.body.email, request.body.subject, request.body.message);
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.USEREMAIL,
+      pass: process.env.EMAILPASSWORD
+    }
+  });
+
+  const mailOptions = {
+    from: request.body.email,
+    to: '"' + process.env.USEREMAIL + '"',
+    subject: `Message from ${request.body.email}: ${request.body.subject}`,
+    text: request.body.message
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+      response.send('error');
+    } else {
+      console.log('Email sent ' + info.response);
+      response.send("success");
+    }
+  });
+});
 
 const calculateOrderAmount = (items) => {
   // Replace this constant with a calculation of the order's amount
@@ -29,7 +62,7 @@ app.post("/send-invoice", async (request, response) => {
     auto_advance: true, // Auto-finalize this draft after ~1 hour
     collection_method: 'charge_automatically'
   });
-  const invoice = await stripe.invoices.finalizeInvoice('id');
+  // const invoice = await stripe.invoices.finalizeInvoice('id');
 });
 
 app.post("/create-payment-intent", cors(), async (request, response) => {
