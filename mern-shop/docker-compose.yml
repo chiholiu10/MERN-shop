@@ -8,6 +8,7 @@ services:
       dockerfile: Dockerfile
     image: myapp-server
     container_name: myapp-node-server
+    restart: always
     volumes: 
       - ./serverside/:/usr/src/App
       - /usr/src/App/node_modules
@@ -32,6 +33,7 @@ services:
       dockerfile: Dockerfile
     image: myapp-client
     container_name: myapp-react-client
+    restart: always
     volumes:
       - ./clientside/:/usr/src/App
       - /usr/src/App/node_modules

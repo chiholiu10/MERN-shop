@@ -5,14 +5,17 @@ import type { ItemsProps } from "src/Types/Types";
 import { addToCart } from "../../Actions";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import { useDispatch } from "react-redux";
+import SearchInput from "../SearchInput/SearchInput";
 
 export const ProductList: FC<ProductListProps> = ({ productList, shoppingCart }) => {
   const dispatch = useDispatch();
   return (
     <>
       <div>Products</div>
+      <SearchInput />
       <ShoppingCart />
       <div>
+
         {productList?.map((item: ItemsProps) => {
           return (
             <div key={item.id}>

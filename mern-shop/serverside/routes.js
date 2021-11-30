@@ -14,7 +14,7 @@ dotenv.config();
 app.use(cookieParser());
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
-
+console.log('restart');
 console.log(process.env.USEREMAIL, process.env.EMAILPASSWORD);
 
 app.post("/sendForm", (request, response) => {
