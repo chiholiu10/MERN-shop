@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "@types/react-router-dom": "^5.3.2",
     "dotenv": "^10.0.0",
+    "lint-staged": "^12.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -36,8 +37,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm run lint"
+      "pre-commit": "npm run test",
+      "pre-push": "npm run build"
     }
   },
   "browserslist": {
@@ -65,6 +66,7 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.27.1",
-    "eslint-plugin-react-hooks": "^4.3.0"
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.4"
   }
 }
