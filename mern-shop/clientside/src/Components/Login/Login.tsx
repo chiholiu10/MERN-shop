@@ -4,7 +4,7 @@ import type { EventTargtProps, LoginRequestType, LoginType } from "src/Types/Typ
 export const Login: FC = () => {
   const [loginData, setLoginData] = useState<LoginType>({
     username: "",
-    pass word: ""
+    password: ""
   });
 
   const handler = (e: EventTargtProps) => {
