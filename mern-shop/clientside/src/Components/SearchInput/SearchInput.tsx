@@ -9,7 +9,6 @@ const SearchInput: FC<SearchInputProps> = () => {
   return (
     <input type="text" name="search" onChange={searchValue} />
   );
-
 };
 
 const mapStateToProps = (state: any) => ({
