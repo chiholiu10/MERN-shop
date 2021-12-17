@@ -7,4 +7,5 @@ export const ShoppingCartComponent = styled.div`
   position: fixed;
   right: 0;
   background-color: white;
+  display: none;
 `;

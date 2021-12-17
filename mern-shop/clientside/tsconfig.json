@@ -1,13 +1,11 @@
 {
   "compilerOptions": {
-    "baseUrl": "",
-    "target": "ESNext",
+    "target": "es6",
     "lib": [
       "DOM",
-      "DOM.Iterable",
-      "ESNext"
+      "DOM.Iterable"
     ],
-    "allowJs": false,
+    "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
@@ -22,10 +20,14 @@
     "importsNotUsedAsValues": "error",
     "noFallthroughCasesInSwitch": true
   },
+  "exclude": [
+    "node_modules"
+  ],
   "include": [
     "/src/**/*.ts",
     "**/src/**/*.ts",
     "/src/**/*.d.ts",
+    "**/*.ts",
     "**/*.tsx"
   ]
 }

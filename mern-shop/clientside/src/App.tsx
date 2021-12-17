@@ -7,11 +7,12 @@ import { Register } from "./Components/Register/Register";
 import { EnterNewPassword } from "./Components/EnterNewPassword/EnterNewPassword";
 import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
 import { allProducts } from "./Actions";
-import ProductList from "./Components/ProductList/ProductList";
-import Cookies from "universal-cookie";
 import { BrowserRouter } from "react-router-dom";
 import { PaymentComplete } from "./Components/PaymentComplete/PaymentComplete";
 import { Form } from "./Components/Form/Form";
+import ProductList from "./Components/ProductList/ProductList";
+import Cookies from "universal-cookie";
+import Navbar from "./Components/Navbar/Navbar";
 
 const App: FC<AppProps> = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const App: FC<AppProps> = () => {
         }
       });
       const productJSON = await products.json();
+      console.log(productJSON);
       dispatch(allProducts(productJSON.products));
       setLoader(true);
     } catch (error) {
@@ -45,10 +47,9 @@ const App: FC<AppProps> = () => {
 
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<ProtectedRoute isAuth={true} />}>
-          <Route path="/Dashboard" element={<ProductList />} />
-        </Route>
+        <Route path="/" element={<ProductList />} />
         <Route path="/reset-password/:id/:token" element={<EnterNewPassword />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />

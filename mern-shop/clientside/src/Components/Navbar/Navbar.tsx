@@ -1,16 +1,16 @@
 import { FC, memo } from "react";
 import { connect, ConnectedProps } from "react-redux";
-import type { EventTargtProps } from "src/Types/Types";
+import { NavigationBar } from "./Navbar.styles";
+import SearchInput from "../SearchInput/SearchInput";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
-const SearchInput: FC<SearchInputProps> = () => {
-  const searchValue = (event: EventTargtProps) => {
-    console.log(event.target.value);
-  };
-
+const Navbar: FC<SearchInputProps> = () => {
   return (
-    <input type="text" name="search" onChange={searchValue} />
+    <NavigationBar>
+      <SearchInput />
+      <ShoppingCart />
+    </NavigationBar>
   );
-
 };
 
 const mapStateToProps = (state: any) => ({
@@ -20,4 +20,4 @@ const mapStateToProps = (state: any) => ({
 
 const connector = connect(mapStateToProps);
 type SearchInputProps = ConnectedProps<typeof connector>;
-export default connector(memo(SearchInput));
+export default connector(memo(Navbar));
