@@ -22,10 +22,9 @@ export const ShoppingCart: FC<ShoppingCartProps> = ({ shoppingCart }) => {
     try {
       const hello = await fetch("http://localhost:8080/create-payment-intent", paymentHeader);
       const json = await hello.json();
-      console.log(json.clientSecret);
       setClientSecret(json.clientSecret);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      throw err;
     }
   };
 

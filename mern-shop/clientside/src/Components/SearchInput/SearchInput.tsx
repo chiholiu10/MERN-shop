@@ -4,7 +4,6 @@ import type { EventTargtProps } from "src/Types/Types";
 
 const SearchInput: FC<SearchInputProps> = () => {
   const searchValue = (event: EventTargtProps) => {
-    console.log(event.target.value);
   };
 
   return (

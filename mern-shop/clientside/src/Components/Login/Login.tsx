@@ -31,8 +31,8 @@ export const Login: FC = () => {
 
     try {
       await fetch("http://localhost:8080/login", loginRequest);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      throw err;
     }
   };
 

@@ -23,8 +23,8 @@ export const ResetPassword: FC = () => {
 
     try {
       await fetch("http://localhost:8080/reset-password", passwordRequest);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      throw err;
     }
   };
 

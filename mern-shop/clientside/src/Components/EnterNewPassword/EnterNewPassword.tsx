@@ -20,7 +20,7 @@ export const EnterNewPassword = () => {
     try {
       await fetch(`/reset-password/${id}/${token}`, changePassword);
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   };
 

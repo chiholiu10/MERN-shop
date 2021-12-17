@@ -8,7 +8,6 @@ import { useDispatch } from "react-redux";
 import SearchInput from "../Navbar/Navbar";
 
 export const ProductList: FC<ProductListProps> = ({ productList, shoppingCart }) => {
-  console.log(productList);
   const dispatch = useDispatch();
   return (
     <>

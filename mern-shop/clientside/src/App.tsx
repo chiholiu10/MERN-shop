@@ -32,11 +32,11 @@ const App: FC<AppProps> = () => {
         }
       });
       const productJSON = await products.json();
-      console.log(productJSON);
+
       dispatch(allProducts(productJSON.products));
       setLoader(true);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      throw err;
     }
   };
 

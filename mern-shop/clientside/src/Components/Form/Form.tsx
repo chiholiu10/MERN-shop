@@ -8,8 +8,6 @@ export const Form: FC = () => {
     message: ""
   });
 
-  console.log(formData);
-
   const sendEmail = async (e: FormEvent<HTMLFormElement>) => {
     const requestOption = {
       method: "POST",
@@ -22,9 +20,8 @@ export const Form: FC = () => {
 
     try {
       const send = await fetch("http://localhost:8080/sendForm", requestOption);
-      console.log(send);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      throw err;
     }
   };
 
