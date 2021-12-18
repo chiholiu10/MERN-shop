@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import type { EventTargtProps } from "src/Types/Types";
+import type { EventTargtProps } from "../../Types/Types";
 
 export const ResetPassword: FC = () => {
   const [resetPassword, setResetPassword] = useState({ email: "" });

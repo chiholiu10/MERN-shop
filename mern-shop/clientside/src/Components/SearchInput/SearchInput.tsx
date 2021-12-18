@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { connect, ConnectedProps } from "react-redux";
-import type { EventTargtProps } from "src/Types/Types";
+import type { EventTargtProps } from "../../Types/Types";
 
 const SearchInput: FC<SearchInputProps> = () => {
   const searchValue = (event: EventTargtProps) => {

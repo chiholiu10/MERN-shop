@@ -1,5 +1,5 @@
 import { FC, FormEvent, useState } from "react";
-import type { EventTargtProps, FormProps } from "src/Types/Types";
+import type { EventTargtProps, FormProps } from "../../Types/Types";
 
 export const Form: FC = () => {
   const [formData, getFormData] = useState({

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { FC, memo } from "react";
 import type { ConnectedProps } from "react-redux";
-import type { ItemsProps } from "src/Types/Types";
+import type { ItemsProps } from "../../Types/Types";
 import { addToCart } from "../../Actions";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import { useDispatch } from "react-redux";

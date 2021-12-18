@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import type { EventTargtProps, RegisterType } from "src/Types/Types";
+import type { EventTargtProps, RegisterType } from "../../Types/Types";
 
 export const Register: FC = () => {
   const [registerData, setRegisterData] = useState<RegisterType>({

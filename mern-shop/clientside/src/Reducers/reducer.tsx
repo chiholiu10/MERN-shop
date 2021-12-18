@@ -1,4 +1,3 @@
-import type { ItemsProps } from "src/Types/Types";
 import { types } from "../Actions";
 
 type InitalStateProps = {

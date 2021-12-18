@@ -1,5 +1,5 @@
 import { FC, FormEvent, useState } from "react";
-import type { EventTargtProps, LoginRequestType, LoginType } from "src/Types/Types";
+import type { EventTargtProps, LoginRequestType, LoginType } from "../../Types/Types";
 
 export const Login: FC = () => {
   const [loginData, setLoginData] = useState<LoginType>({

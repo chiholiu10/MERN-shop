@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router";
-import type { EventTargtProps } from "src/Types/Types";
+import type { EventTargtProps } from "../../Types/Types";
 
 export const EnterNewPassword = () => {
   const { id, token } = useParams();
