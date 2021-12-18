@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.1.10",
     "@types/react-router-dom": "^5.3.2",
     "dotenv": "^10.0.0",
+    "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -31,7 +32,7 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "format": "eslint \"**/*.{js,ts,tsx}\"  --fix",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky install .config/husky"
   },
   "eslintConfig": {
     "extends": [
@@ -71,6 +72,6 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "husky": "^7.0.4"
+    "husky": "^7.0.0"
   }
 }
