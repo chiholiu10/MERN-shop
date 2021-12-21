@@ -24,8 +24,10 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
+        "no-duplicate-imports": 1,
         "no-console": 1,
         "react/react-in-jsx-scope": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx", "js"] }], //should add ".ts" if typescript project
-    }
+    },
+    "ignorePatterns": ["build/*"]
 };

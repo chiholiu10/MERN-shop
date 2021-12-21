@@ -1,7 +1,6 @@
 import { FC, memo, useEffect, useState } from "react";
-import { connect, ConnectedProps } from "react-redux";
+import { connect, ConnectedProps, useDispatch } from "react-redux";
 import { decrementQuantity, deleteFromCart, incrementQuantity } from "../../Actions";
-import { useDispatch } from "react-redux";
 import { ShoppingCartComponent } from "./ShoppingCart.styles";
 import { CheckOutForm } from "../CheckOutForm/CheckOutForm";
 import { Elements } from '@stripe/react-stripe-js';

@@ -1,10 +1,8 @@
-import { connect } from "react-redux";
 import { FC, memo } from "react";
-import type { ConnectedProps } from "react-redux";
 import type { ItemsProps } from "../../Types/Types";
 import { addToCart } from "../../Actions";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
-import { useDispatch } from "react-redux";
+import { connect, ConnectedProps, useDispatch } from "react-redux";
 import SearchInput from "../Navbar/Navbar";
 
 export const ProductList: FC<ProductListProps> = ({ productList, shoppingCart }) => {
