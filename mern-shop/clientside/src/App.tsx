@@ -23,15 +23,17 @@ const App: FC<AppProps> = () => {
   const fetchProductApi = async () => {
     setLoader(false);
     try {
-      const products = await fetch("https://asos2.p.rapidapi.com/products/v2/list?store=US&offset=0&categoryId=4209&limit=48&country=US&sort=freshness&currency=USD&sizeSchema=US&lang=en-US", {
+      const products = await fetch("https://aliexpress-unofficial.p.rapidapi.com/feedbacks/4000886597329", {
         "method": "GET",
         "headers": {
-          "x-rapidapi-host": process.env.REACT_APP_X_RAPID_API_HOST || "",
-          "x-rapidapi-key": process.env.REACT_APP_X_RAPID_API_KEY || ""
+          // "x-rapidapi-host": process.env.REACT_APP_X_RAPID_API_HOST || "",
+          // "x-rapidapi-key": process.env.REACT_APP_X_RAPID_API_KEY || ""
+          'x-rapidapi-host': 'aliexpress-unofficial.p.rapidapi.com',
+          'x-rapidapi-key': '1f094dcf85msh2943fbc106fdaa4p19dc44jsn92856147a0c6'
         }
       });
-      const productJSON = await products.json();
 
+      const productJSON = await products.json();
       dispatch(allProducts(productJSON.products));
       setLoader(true);
     } catch (err) {
