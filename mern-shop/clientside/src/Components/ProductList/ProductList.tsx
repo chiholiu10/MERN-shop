@@ -1,9 +1,9 @@
 import { FC, memo } from "react";
 import type { ItemsProps } from "../../Types/Types";
-import { addToCart } from "../../Actions";
-import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import { addToCart, decrement, increment } from "../../Actions";
 import { connect, ConnectedProps, useDispatch } from "react-redux";
-import SearchInput from "../Navbar/Navbar";
+import { ProductBlock, ProductBlockInfo, ProductBlockWrap } from "./Product.styles";
+import { countReset } from "console";
 
 export const ProductList: FC<ProductListProps> = ({ productList, shoppingCart }) => {
   const dispatch = useDispatch();
@@ -11,18 +11,27 @@ export const ProductList: FC<ProductListProps> = ({ productList, shoppingCart })
     <>
       <div>Products</div>
 
-      {productList?.map((item: ItemsProps) => {
-        return (
-          <div key={item.id}>
-            <p>{item.name}</p>
-            <p>{item.price.currency}</p>
-            <p>{item.price.current.value}</p>
-            <p>{item.price.current.text}</p>
-            <img src={`//${item.imageUrl}`} alt={item.brandName} />
-            <button onClick={() => dispatch(addToCart(item, item.id))}>Add to Bag</button>
-          </div>
-        );
-      })}
+      <ProductBlock>
+        {productList?.map((item: ItemsProps, index: number) => {
+          return (
+            <ProductBlockWrap key={index}>
+              <ProductBlockInfo>
+                <p>{item.title}</p>
+                <p>{item.description}</p>
+                <p>{item.price}</p>
+                {/* <p>{item.rating.rate}</p> */}
+                {/* <p>{item.rating.count}</p> */}
+              </ProductBlockInfo>
+              <img src={`${item.image}`} alt={item.title} />
+              <button type="button" onClick={() => dispatch(increment(item.id))} >+</button>
+              <button type="button" onClick={() => dispatch(decrement(item.id))} >-</button>
+
+              <p><span>Quantity</span>{item.quantity}</p>
+              <button onClick={() => dispatch(addToCart(item, item.id))}>Add to Bag</button>
+            </ProductBlockWrap>
+          );
+        })}
+      </ProductBlock>
     </>
   );
 };

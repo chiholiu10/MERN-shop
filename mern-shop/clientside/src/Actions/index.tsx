@@ -1,10 +1,14 @@
+import type { ItemsProps } from "../Types/Types";
+
 export const types = {
   GET_TOKEN: "GET_TOKEN",
   ALL_PRODUCTS: "ALL_PRODUCTS",
   INCREMENT_QUANTITY: "INCREMENT_QUANTITY",
   DECREMENT_QUANTITY: "DECREMENT_QUANTITY",
   DELETE_FROM_CART: "DELETE_FROM_CART",
-  ADD_TO_CART: "ADD_TO_CART"
+  ADD_TO_CART: "ADD_TO_CART",
+  INCREMENT: "INCREMENT",
+  DECREMENT: "DECREMENT"
 };
 
 export const getToken = (token: string) => {
@@ -14,30 +18,38 @@ export const getToken = (token: string) => {
   };
 };
 
-export const allProducts = (products: any) => ({
+export const allProducts = (allProducts: ItemsProps[]) => ({
   type: types.ALL_PRODUCTS,
-  products
+  allProducts
 });
 
-export const addToCart = (item: any, itemId: any) => ({
+export const addToCart = (item: ItemsProps, itemId: number) => ({
   type: types.ADD_TO_CART,
   item,
+  itemId,
+});
+
+export const decrement = (itemId: number) => ({
+  type: types.DECREMENT,
   itemId
 });
 
-export const decrementQuantity = (item: any, itemId: any) => ({
+export const increment = (itemId: number) => ({
+  type: types.INCREMENT,
+  itemId
+});
+
+export const decrementQuantity = (itemId: number) => ({
   type: types.DECREMENT_QUANTITY,
-  item,
   itemId
 });
 
-export const incrementQuantity = (item: any, itemId: any) => ({
+export const incrementQuantity = (itemId: number) => ({
   type: types.INCREMENT_QUANTITY,
-  item,
   itemId
 });
 
-export const deleteFromCart = (itemId: any) => ({
+export const deleteFromCart = (itemId: number) => ({
   type: types.DELETE_FROM_CART,
   itemId
 });

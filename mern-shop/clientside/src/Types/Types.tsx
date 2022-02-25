@@ -17,23 +17,16 @@ export type RegisterType = {
 };
 
 export type ItemsProps = {
-  brandName: string;
-  colour?: string;
-  colourWayId?: number;
   id: number;
-  imageUrl: string;
-  isSellingFast: boolean;
-  name: string;
-  price: {
-    currency: string,
-    current: {
-      value: number;
-      text: string;
-    },
-    productCode: number;
-    productType: string;
-    url: string;
-  };
+  title?: string;
+  description?: number;
+  image?: string;
+  rating: {
+    rate: number;
+    count: number;
+  },
+  price: number;
+  quantity: number;
 };
 
 export type LoginRequestType = {
@@ -51,4 +44,4 @@ export type FormProps = {
   email: string;
   subject: string;
   message: string;
-};
+};;

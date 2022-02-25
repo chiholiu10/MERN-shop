@@ -12,6 +12,8 @@ import { Form } from "./Components/Form/Form";
 import ProductList from "./Components/ProductList/ProductList";
 import Cookies from "universal-cookie";
 import Navbar from "./Components/Navbar/Navbar";
+import { fetchData } from "./Services/api";
+import ShoppingCart from "./Components/ShoppingCart/ShoppingCart";
 
 const App: FC<AppProps> = () => {
   const dispatch = useDispatch();
@@ -23,18 +25,8 @@ const App: FC<AppProps> = () => {
   const fetchProductApi = async () => {
     setLoader(false);
     try {
-      const products = await fetch("https://aliexpress-unofficial.p.rapidapi.com/feedbacks/4000886597329", {
-        "method": "GET",
-        "headers": {
-          // "x-rapidapi-host": process.env.REACT_APP_X_RAPID_API_HOST || "",
-          // "x-rapidapi-key": process.env.REACT_APP_X_RAPID_API_KEY || ""
-          'x-rapidapi-host': 'aliexpress-unofficial.p.rapidapi.com',
-          'x-rapidapi-key': '1f094dcf85msh2943fbc106fdaa4p19dc44jsn92856147a0c6'
-        }
-      });
-
-      const productJSON = await products.json();
-      dispatch(allProducts(productJSON.products));
+      const products = await fetchData();
+      dispatch(allProducts(products));
       setLoader(true);
     } catch (err) {
       throw err;
@@ -56,6 +48,7 @@ const App: FC<AppProps> = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/payment-complete" element={<PaymentComplete />} />
+        <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/form" element={<Form />} />
       </Routes>
     </BrowserRouter >

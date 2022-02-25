@@ -6,6 +6,6 @@ export const ShoppingCartComponent = styled.div`
   width: 300px;
   position: fixed;
   right: 0;
+  top: 0;
   background-color: white;
-  display: none;
 `;
