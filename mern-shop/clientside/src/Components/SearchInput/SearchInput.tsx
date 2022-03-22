@@ -4,10 +4,14 @@ import type { EventTargtProps } from "../../Types/Types";
 
 const SearchInput: FC<SearchInputProps> = () => {
   const searchValue = (event: EventTargtProps) => {
+    // eslint-disable-next-line no-console
+    console.log(event.target.value);
   };
 
   return (
-    <input type="text" name="search" onChange={searchValue} />
+    <form>
+      <input type="text" name="search" onChange={searchValue} />
+    </form>
   );
 };
 

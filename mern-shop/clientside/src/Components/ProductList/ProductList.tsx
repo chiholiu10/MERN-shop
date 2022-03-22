@@ -5,7 +5,7 @@ import { connect, ConnectedProps, useDispatch } from "react-redux";
 import { ProductBlock, ProductBlockInfo, ProductBlockWrap } from "./Product.styles";
 import { countReset } from "console";
 
-export const ProductList: FC<ProductListProps> = ({ productList, shoppingCart }) => {
+const ProductList: FC<ProductListProps> = ({ productList, shoppingCart }) => {
   const dispatch = useDispatch();
   return (
     <>

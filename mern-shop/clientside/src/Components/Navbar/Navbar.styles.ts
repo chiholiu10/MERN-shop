@@ -5,11 +5,15 @@ export const NavigationBar = styled.nav`
   position: fixed;
   width: 100%;
   height: 60px;
-  background-color: 
+  background-color: black;
   top: 0;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   padding-right: 30px;
+  span {
+    color: red;
+    text-align: left;
+  }
 `;

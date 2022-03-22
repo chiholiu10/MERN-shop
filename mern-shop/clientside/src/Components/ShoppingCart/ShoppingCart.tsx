@@ -43,6 +43,7 @@ const ShoppingCart: FC<ShoppingCartProps> = ({ shoppingCart }) => {
           <p>{item.id}</p>
           <p>{item.title}</p>
           <p>{item.quantity}</p>
+          <img src={`${item.image}`} alt={item.title} />
           <button onClick={() => dispatch(incrementQuantity(item.id))}>+</button>
           <button onClick={() => dispatch(item.quantity <= 1 ? deleteFromCart(item.id) : decrementQuantity(item.id))}>-</button>
           <div>

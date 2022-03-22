@@ -74,7 +74,7 @@ export const reducer = (state = initialState, action: any) => {
           ...item,
           quantity: item.quantity + 1
         } : {
-          item
+          ...item
         })
       };
     }
@@ -87,7 +87,7 @@ export const reducer = (state = initialState, action: any) => {
           ...item,
           quantity: item.quantity - 1
         } : {
-          item
+          ...item
         })
       };
     }

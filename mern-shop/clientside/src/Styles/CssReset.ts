@@ -16,6 +16,7 @@ export const CSSreset = createGlobalStyle(
     }
     main {
       display: block;
+
     }
     hr {
       box-sizing: content-box;

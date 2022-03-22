@@ -4,9 +4,10 @@ import { NavigationBar } from "./Navbar.styles";
 import SearchInput from "../SearchInput/SearchInput";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
-const Navbar: FC<SearchInputProps> = () => {
+const Navbar: FC<SearchInputProps> = ({ shoppingCart }) => {
   return (
     <NavigationBar>
+      <span>{shoppingCart.length}</span>
       <SearchInput />
       <ShoppingCart />
     </NavigationBar>

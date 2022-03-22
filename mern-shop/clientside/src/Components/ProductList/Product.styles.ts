@@ -18,11 +18,11 @@ export const ProductBlockWrap = styled.div`
   img {
     width: 150px;
     margin-bottom: 0;
-    border: 1px solid red;
   }
   button {
-    border: 1px solid red;
+    border: 1px solid black;
     margin-top: auto;
+    width: 200px;
   }
 `;
 
